@@ -84,9 +84,10 @@ h1 {
 	opacity: .3;
 }
 
-.formContainer {
+#formContainer {
 	width: 300px;
 	margin: auto;
+	display: none;
 }
 
 #file {
@@ -97,6 +98,7 @@ h1 {
 #upload-button {
 	background-color: #a976ca;
 	width: 80px;
+	height: 20px;
 	margin: auto;
 	border-radius: 4px;
 	-webkit-border-radius: 4px;
