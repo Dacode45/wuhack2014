@@ -21,10 +21,10 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
-            <input type="file">
-            <input type="submit" name="submit" value="Upload">
-
+        <form action="savePhoto.php" method="POST" enctype="multipart/form-data">
+            <label for="file">Filename:</label>
+            <input type="file" name="file" id="file"><br>
+            <input type="submit" name="submit" value="Submit">
         </form>
 
 

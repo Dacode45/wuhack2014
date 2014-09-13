@@ -2,6 +2,8 @@
 //detect when an image has been selected to be uploaded
 if(isset($_POST['name'])){
 	//upload image
+	
 	//display image
+	
 	}
 ?>
