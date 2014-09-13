@@ -2,14 +2,35 @@
 $(document).ready(
 	function(){
 		setUpPictureLoading();
-		var uploadButton = $("#uploadCreator");
-		console.log(uploadButton);
+		var uploadButton = $("#upload-button");
 		uploadButton.click( function(){
 			var uploadDiv = createUploadDiv();
 			console.log(uploadDiv);
 			$("#container").append(uploadDiv);
-			$("#uploadDiv").animate({width: "+=50%"}, 200);	
-			$("#uploadDiv").animate({height: "+=50%"}, 300);
+			$("#uploadDiv").animate({top: "-=40%"}, 200);	
+			$("#fileImage").click(function(){
+				$("#file").change(function(){
+
+
+
+					var files = this.files || [];
+					console.log(files[0]);
+					if(!files.length || !window.FileReader) return;
+
+
+					var reader = new FileReader();
+					
+
+					reader.onloadend = function(){
+						$("#imagePreview").css("background-image", "url("+this.result+")");
+					}
+
+					reader.readAsDataURL(files[0]);
+				});
+				$("#file").click();
+				
+			});
+
 
 		});
 
@@ -95,6 +116,9 @@ function setUpPictureLoading(){
 
 function createUploadDiv(){
 	var uploadDiv =  createElt("div", {"id":"uploadDiv"})
-	uploadDiv.append(document.getElementById('formContainer'));
+	var form = document.getElementById('formContainer');
+	form.style.display = "block";
+	uploadDiv.appendChild(form);
+
 	return uploadDiv;
 }
