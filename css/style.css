@@ -1,2 +1,44 @@
 /* Main Stylesheet */
 
+h1 {
+	text-align: center;
+	color: #a976ca;
+	font-size: 60px;
+	margin-top: 5px;
+	font-family: 'Lato', Arial, sans-serif;
+	font-weight: lighter;
+}
+
+#header {
+	width: 100%;
+	background-color: #282828;
+	margin: 0;
+	padding-top: 10px;
+	padding-bottom: 50px;
+}
+
+.container {
+	width: 800px;
+	margin: auto;
+}
+
+#upload-input {
+	opacity: 0;
+}
+
+#upload-div {
+	background-color: blue;
+}
+
+#upload-div:hover {
+	background-color:#1f00cc;
+}
+
+#upload-div:active {
+	position:relative;
+	top:1px;
+}
+
+#submit {
+	display: none;
+}
