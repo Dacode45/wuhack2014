@@ -21,18 +21,13 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <form action=""upload_file.php"" method="POST">
+        <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>" method="POST">
             <input type="file">
             <input type="submit" name="submit" value="Upload">
+
         </form>
 
-        <?php
-        //detect when an image has been selected to be uploaded
-        if(isset($_POST['name'])){
-            //upload image
-            //display image
-        }
-        ?>
+
 
 
 
