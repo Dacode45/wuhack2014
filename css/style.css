@@ -1,5 +1,12 @@
 /* Main Stylesheet */
 
+@font-face {
+    font-family: 'Lato';
+    src: url('fonts/Lato.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
 html,
 body {
 	margin: 0;
@@ -172,7 +179,6 @@ label {
 	max-width: 50%;
 	max-height: 100%;
 }
-
 #imagePreveiw  img {
 	display: block;
 	margin: auto;
