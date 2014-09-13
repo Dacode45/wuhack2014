@@ -21,31 +21,47 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
             <![endif]-->
-            <div id="header">
-                <h1>Page Title</h1>
 
+            <div id="header">
+                <h1>pica<span id="boo">boo</span></h1>
                 <div class="container">
                     <form action="?" method="post" enctype="multipart/form-data">
                         <label for="file">Filename:</label>
-                        <div id="upload-div">
+                        <div id="upload-button">
                             <input id="file" type="file" name="file">
                         </div>
                         <input type="hidden" name="MAX_FILE_SIZE" value="600000000">
                         <input id="submit" name="submit" type="submit" value="Submit">
                     </form>
                 </div>
+            </div>
+            
+
+            <div id="content">
+                <!-- PICTURES WILL GO HERE -->
 
             </div>
 
-            <?php
+
+
+            <div id="footer">
+                <p>Some words here</p>
+            </div>
+
+
+
+
+
+
+            <div class="php"> <?php
         //detect whether or not a picture was attempted to be uploaded
             if ($_FILES["file"]["error"] > 0) {
               echo "Error: " . $_FILES["file"]["error"] . "<br>";
           } 
           
         //save the picture
-          
-          ?>
+
+          ?> </div>
 
 
 

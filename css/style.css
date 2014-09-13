@@ -2,39 +2,52 @@
 
 h1 {
 	text-align: center;
-	color: #a976ca;
+	color: #ebebeb;
 	font-size: 60px;
 	margin-top: 5px;
+	margin-bottom: 8px;
 	font-family: 'Lato', Arial, sans-serif;
-	font-weight: lighter;
+}
+
+#boo {
+	font-weight: bold;
+	opacity: .3;
 }
 
 #header {
 	width: 100%;
-	background-color: #282828;
+	background-color: #a976ca;
 	margin: 0;
 	padding-top: 10px;
-	padding-bottom: 50px;
+	padding-bottom: 35px;
 }
 
 .container {
-	width: 800px;
+	width: 300px;
 	margin: auto;
 }
 
 #file {
 	opacity: 0;
+	width: 80px;
 }
 
-#upload-div {
-	background-color: blue;
+#upload-button {
+	background-color: #a976ca;
+	width: 80px;
+	margin: auto;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border: 2px solid #b78dd2;
 }
 
-#upload-div:hover {
-	background-color:#1f00cc;
+#upload-button:hover {
+	background-color:#a976ca;
+	border-color: #cdace2;
 }
 
-#upload-div:active {
+#upload-button:active {
 	position:relative;
 	top:1px;
 }
@@ -42,3 +55,40 @@ h1 {
 #submit {
 	display: none;
 }
+
+label {
+	display: none;
+}
+
+.php {
+	display: none;
+}
+
+#footer {
+	width: 100%;
+	background-color: #353535;
+	margin: 0;
+	padding-top: 15px;
+	padding-bottom: 10px;
+}
+
+#footer p {
+	text-align: center;
+	color: #686868;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
