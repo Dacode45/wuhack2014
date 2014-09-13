@@ -173,8 +173,8 @@ label {
 }
 
 @font-face {
-    font-family: Lato;
-    src: url(fonts/Lato.ttf);
+    font-family: 'Lato';
+    src: url('fonts/Lato.ttf') format('truetype');
 }
 
 
