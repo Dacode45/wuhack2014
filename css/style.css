@@ -1,5 +1,78 @@
 /* Main Stylesheet */
 
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #1A1A26;
+}
+
+#container{
+	height: 100%;
+	position: relative;
+}
+
+#header {
+	position: relative;
+	width: 100%;
+	height: 10%;
+	background-color:  #a976ca;
+	margin: 0;
+	padding-top: 10px;
+	padding-bottom: 35px;
+	overflow-y: scroll;
+}
+
+#content{
+	
+	position: relative;
+	height: 60%;
+	width: 90%;
+	padding: 10px;
+	padding-top: 1em;
+	padding-bottom: 60px;
+	margin-top: auto;
+	margin: auto;
+	background: #33334C;
+	border: 2px solid;
+    border-radius: 25px;
+    overflow-y: scroll;
+}
+
+#content::-webkit-scrollbar{
+	display: none;
+}
+
+/*
+
+Desktop scrollbar
+#content::-webkit-scrollbar{
+	width: 1em;
+}
+
+#content::-webkit-scrollbar-track{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+}
+
+
+#content::-webkit-scrollbar-thumb{
+	background-color: darkgrey;
+	outline: 1px solid slategrey; 
+}
+*/
+#footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 10%;
+	background-color: #1A1A26;
+	margin: 0;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	overflow-y: scroll; 
+}
+
 h1 {
 	text-align: center;
 	color: #ebebeb;
@@ -14,15 +87,9 @@ h1 {
 	opacity: .3;
 }
 
-#header {
-	width: 100%;
-	background-color: #a976ca;
-	margin: 0;
-	padding-top: 10px;
-	padding-bottom: 35px;
-}
 
-.container {
+
+.formContainer {
 	width: 300px;
 	margin: auto;
 }
@@ -64,13 +131,7 @@ label {
 	display: none;
 }
 
-#footer {
-	width: 100%;
-	background-color: #353535;
-	margin: 0;
-	padding-top: 15px;
-	padding-bottom: 10px;
-}
+
 
 #footer p {
 	font-family: 'Lato', Arial, sans-serif;
@@ -78,6 +139,7 @@ label {
 	color: #686868;
 }
 
+<<<<<<< HEAD
 @media screen and (min-width: 750px) {
 	h1 {
 		font-size: 100px;
@@ -90,17 +152,15 @@ label {
 		width: 120px;
 	}
 }
+=======
+img {
 
+	display: block;
+	margin:auto;
+	margin-top: 10px;
+>>>>>>> FETCH_HEAD
 
-
-
-
-
-
-
-
-
-
-
-
+	max-width: 90%;
+	max-height: 90%;
+}
 
