@@ -12,6 +12,8 @@ $(document).ready(
 			$("#uploadDiv").animate({height: "+=50%"}, 300);
 
 		});
+
+
 	}
 );
 
@@ -93,5 +95,6 @@ function setUpPictureLoading(){
 
 function createUploadDiv(){
 	var uploadDiv =  createElt("div", {"id":"uploadDiv"})
+	uploadDiv.append(document.getElementById('formContainer'));
 	return uploadDiv;
 }
