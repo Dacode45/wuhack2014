@@ -73,11 +73,23 @@ label {
 }
 
 #footer p {
+	font-family: 'Lato', Arial, sans-serif;
 	text-align: center;
 	color: #686868;
 }
 
-
+@media screen and (min-width: 750px) {
+	h1 {
+		font-size: 100px;
+	}
+	#file {
+		width: 120px;
+		height: 30px;
+	}
+	#upload-button {
+		width: 120px;
+	}
+}
 
 
 
