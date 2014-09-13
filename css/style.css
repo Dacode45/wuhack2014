@@ -139,7 +139,7 @@ label {
 	color: #686868;
 }
 
-<<<<<<< HEAD
+
 @media screen and (min-width: 750px) {
 	h1 {
 		font-size: 100px;
@@ -152,14 +152,12 @@ label {
 		width: 120px;
 	}
 }
-=======
+
 img {
 
 	display: block;
 	margin:auto;
 	margin-top: 10px;
->>>>>>> FETCH_HEAD
-
 	max-width: 90%;
 	max-height: 90%;
 }
