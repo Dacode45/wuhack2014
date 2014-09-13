@@ -1,18 +1,11 @@
 (
 	function(){
-		var content = $("#content");
-		content.append(loadPic(5));
-		content.scroll(function(){
-			//console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
-			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight){
-				content.append(loadPic(5));
-
-				var images = $("#content img");
-				console.log(images.size());
-				if(images.size() > 30){
-					images.slice(0,15).remove();
-				}
-			}
+		setUpPictureLoading();
+		var uploadButton = $("uploadCreator");
+		console.log(uploadButton);
+		uploadButton.click( function(){
+			alert("hi");
+			console.log("Click "+ stringify(arguments));
 		});
 	}()
 );
@@ -71,4 +64,22 @@ function createRandomImages(num, maxWidth, minWidth, maxHeight, minHeight){
 function loadPic(num){
 	num = num || 5;
 	return createRandomImages(num);
+}
+
+function setUpPictureLoading(){
+
+		var content = $("#content");
+		content.append(loadPic(5));
+		content.scroll(function(){
+			//console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
+			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight){
+				content.append(loadPic(5));
+
+				var images = $("#content img");
+				console.log(images.size());
+				if(images.size() > 30){
+					images.slice(0,15).remove();
+				}
+			}
+		});
 }
