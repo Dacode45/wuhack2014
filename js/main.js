@@ -1,14 +1,20 @@
-(
+
+$(document).ready(
 	function(){
 		setUpPictureLoading();
-		var uploadButton = $("uploadCreator");
+		var uploadButton = $("#uploadCreator");
 		console.log(uploadButton);
 		uploadButton.click( function(){
-			alert("hi");
-			console.log("Click "+ stringify(arguments));
+			var uploadDiv = createUploadDiv();
+			console.log(uploadDiv);
+			$("#container").append(uploadDiv);
+			$("#uploadDiv").animate({width: "+=50%"}, 200);	
+			$("#uploadDiv").animate({height: "+=50%"}, 300);
+
 		});
-	}()
+	}
 );
+
 
 function stringify(o){
 	var cache = [];
@@ -35,7 +41,8 @@ function createElt(type, attributes){
 		
 	}
 	for(var i = 2; i < arguments.length; i++){
-		if(typeof arguments == "string"){
+		if(typeof arguments[i] == "string"){
+			
 			elt.appendChild(document.createTextNode(arguments[i]));
 		}
 	}
@@ -82,4 +89,9 @@ function setUpPictureLoading(){
 				}
 			}
 		});
+}
+
+function createUploadDiv(){
+	var uploadDiv =  createElt("div", {"id":"uploadDiv"})
+	return uploadDiv;
 }
