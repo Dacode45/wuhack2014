@@ -4,34 +4,48 @@ $(document).ready(
 		setUpPictureLoading();
 		var uploadButton = $("#upload-button");
 		uploadButton.click( function(){
+
+			
 			var uploadDiv = createUploadDiv();
-			console.log(uploadDiv);
-			$("#container").append(uploadDiv);
-			$("#uploadDiv").animate({top: "-=40%"}, 200);	
+			$("#footer").append(uploadDiv);
+			
+			$("#footer").animate({height: "40%"}).append(uploadDiv);
 			$("#fileImage").click(function(){
 				$("#file").change(function(){
 
 
 
 					var files = this.files || [];
+					fileDisplayArea = document.getElementById("imagePreveiw");
 					console.log(files[0]);
-					if(!files.length || !window.FileReader) return;
+					var file = files[0];
+					var imageType = /image.*/;
 
+					if (file.type.match(imageType)) {
+					  var reader = new FileReader();
 
-					var reader = new FileReader();
-					
+					  reader.onload = function(e) {
+					    fileDisplayArea.innerHTML = "";
 
-					reader.onloadend = function(){
-						$("#imagePreview").css("background-image", "url("+this.result+")");
+					    // Create a new image.
+					    var img = new Image();
+					    // Set the img src property using the data URL.
+					    img.src = reader.result;
+
+					    // Add the image to the page.
+					    fileDisplayArea.appendChild(img);
+					  }
+
+					  reader.readAsDataURL(file); 
+					} else {
+					  fileDisplayArea.innerHTML = "File not supported!";
 					}
-
-					reader.readAsDataURL(files[0]);
 				});
 				$("#file").click();
 				
 			});
 
-
+		uploadButton.click(closeUploadDiv);
 		});
 
 
@@ -116,9 +130,17 @@ function setUpPictureLoading(){
 
 function createUploadDiv(){
 	var uploadDiv =  createElt("div", {"id":"uploadDiv"})
-	var form = document.getElementById('formContainer');
-	form.style.display = "block";
-	uploadDiv.appendChild(form);
+	var form = $("#formContainer").clone();
+	
+	form.css("display", "inline");
+	uploadDiv.appendChild(form[0]);
+	uploadDiv.appendChild(createElt("div", {"id":"imagePreveiw"}));
 
 	return uploadDiv;
+}
+
+function closeUploadDiv(){
+
+	$("#footer").animate({height: "10%"})
+	$(uploadDiv).remove();
 }
