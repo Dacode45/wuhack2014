@@ -108,7 +108,7 @@ function getImagesFromDataBase(num, callback){
 		var images = [];
 
 		picIndex+=pics.length-1;	
-		while(count < pics.length){
+		while(count < 1){//pics.length){
 			console.log("working so far");
 			console.log(stringify(pics));
 			images[count] = createElt("img", {"src":pics[count].fileName});
