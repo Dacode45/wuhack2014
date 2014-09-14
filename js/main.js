@@ -122,12 +122,13 @@ function getPics(numberOfPics){
 
 function createUploadDiv(){
 	var uploadDiv =  createElt("div", {"id":"uploadDiv"})
-	var form = $("#formContainer").clone();
+	var form = $(".formContainer").clone();
 	
-	form.css("display", "inline");
-	uploadDiv.appendChild(form[0]);
-	uploadDiv.appendChild(createElt("div", {"id":"imagePreveiw"}));
-
+	//form.css("display", "initial");
+	form.toggleClass("show");
+	$(uploadDiv).append(form);
+	form.children(".button-container")[0].appendChild(createElt("div", {"id":"imagePreveiw"}));
+	
 	return uploadDiv;
 }
 
