@@ -29,6 +29,8 @@
                     <h1>pica<span id="boo">boo</span></h1>
                 </div>
             </div>
+
+            <div id="enlargedImageWrapper"></div>
             
 
             <div id="content">
@@ -64,23 +66,6 @@
                     <input type="hidden" name="MAX_FILE_SIZE" value="600000000">
                     <input id="submit" name="submit" type="submit" value="Submit">
           </form>
-
-
-
-
-          <!-- When you get to the bottom of the page, ask for the next 5 -->
-          <script type="text/javascript" language="javascript">
-           $(function () {
-               var $win = $(window);
-
-               $win.scroll(function () {
-                    if ($win.height() + $win.scrollTop()
-                                  == $(document).height()) {
-                       alert('Scrolled to Page Bottom');
-                   }
-               });
-           });
-          </script>
 
 
 

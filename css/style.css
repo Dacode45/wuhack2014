@@ -167,7 +167,7 @@ label {
 }
 */
 
-#content > img.normal{
+#content > img{
 	display: block;
 	margin: auto;
 	margin-top: 10px;
@@ -178,13 +178,6 @@ label {
     -o-transition: all 1s;
     -webkit-transition: all 1s;
     transition: all 1s;
-}
-*/
- .enlarged{
-	position: absolute;
-	margin:auto;
-	display: block;
-	max-width: 100%;
 }
 
 #uploadDiv {

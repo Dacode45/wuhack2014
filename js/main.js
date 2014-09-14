@@ -53,17 +53,21 @@ function createRandomImages(num, maxWidth, minWidth, maxHeight, minHeight){
 	while(count < num){
 		var width = Math.floor(Math.random()*maxHeight + minHeight);
 		var height = Math.floor(Math.random()*maxHeight + minHeight);
-		images[count] = createElt("img", {"src":"http://placehold.it/"+width+"x"+height, "class":"normal"})
+		images[count] = createElt("img", {"src":"http://placehold.it/"+width+"x"+height})
 		
 		$(images[count]).click(function(e){
-			$(this).toggleClass("enlarged");
-			$(this).toggleClass("normal");
+			createEnlargedVersion($(this));
 		});
-
 		count++;
 	}
 	return images;
 }
+
+function createEnlargedVersion(img){
+	img = img.clone().detach();
+	console.log(img);
+}
+
 
 function loadPic(num){
 	num = num || 5;
@@ -104,7 +108,7 @@ function openUploadDiv(){
 			var uploadDiv = createUploadDiv();
 			$("#footer").append(uploadDiv);
 			
-			$("#footer").animate({height: "100px"}).append(uploadDiv);
+			$("#footer").animate({height: "40%"}).append(uploadDiv);
 			$("#fileImage").click(function(){
 				console.log("hi");
 				$("#file").change(function(){
@@ -149,7 +153,7 @@ function openUploadDiv(){
 
 function closeUploadDiv(up){
 
-	$("#footer").animate({height: "20px"})
+	$("#footer").animate({height: "10%"})
 	$(uploadDiv).remove();
 	
 	$("#upload-button").off("click", closeUploadDiv);
