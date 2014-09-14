@@ -229,6 +229,7 @@ div.imageWrapper{
 }
 
 .overlay{
+	display: none;
 	background: black;
 	color:white;
 	margin: 10px;

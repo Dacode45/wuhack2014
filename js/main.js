@@ -99,7 +99,7 @@ function loadPic(pics){
 
 function CreateImage(picDat){
 	var div = createElt("div", {"class":"imageWrapper"});
-		var img = createElt("img", { "src":"http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/pics/"+picDat.fileName, "alt":"picaboo"});
+		var img = createElt("img", { "src":"http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/pics/"+picDat.fileName, "onerror":"imageRemove(this);"});
 		div.appendChild(img);
 
 		//Upvotes
@@ -125,8 +125,18 @@ function CreateImage(picDat){
 		//Set up Clicking
 		$(upDiv).on("click", upVote);
 		$(downDiv).on("click", downVote);
+		$(img).on("click", toggleOverlay);
 
 	return div;
+}
+
+function imageRemove(image){
+	$(image).parent(".imageWrapper").remove();
+}
+
+function toggleOverlay(imageDiv){
+	var overlays = $(imageDiv.currentTarget).parent(".imageWrapper").children(".overlay").toggleClass("show");
+
 }
 
 

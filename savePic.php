@@ -24,6 +24,6 @@ if( move_uploaded_file($_FILES['file']['tmp_name'], $full_path) ) {
 	$stmt->close();
 	header("Location: index.html");
 } else {
-	echo sprintf("upload failure:", $filename);
+	echo sprintf("upload failure: %s", $filename);
 }
 ?>
