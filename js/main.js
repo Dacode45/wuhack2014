@@ -116,11 +116,16 @@ function CreateImage(picDat){
 
 		div.appendChild(voteDiv);
 
+		//overlays
 		var titleDiv = createElt("div", {"class":"title overlay"}, "Title");
-		var commentDiv = createElt("div", {"class":"comment overlay"}, "Comment");
+		var detailDiv = createElt("div", {"class":"details overlay"}, "Description");
 		
 		div.appendChild(titleDiv);
-		div.appendChild(commentDiv);
+		div.appendChild(detailDiv);
+
+		//Commenting
+		var commentDiv = createElt("div", {"class":"commentWrapper"});
+		var commentInput = createElt("input", {"type":"text", "name":picDat.fileName});
 
 		//Set up Clicking
 		$(upDiv).on("click", upVote);
