@@ -117,7 +117,7 @@ function getImagesFromDataBase(num, callback){
 		}
 		console.log(callback1);	
 		callback1(images);
-	})
+	}));
 
 
 }
