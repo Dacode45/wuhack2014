@@ -102,8 +102,7 @@ function createRandomImages(num, maxWidth, minWidth, maxHeight, minHeight){
 function getImagesFromDataBase(num, callback){
 	
 	
-	console.log(callback);
-	getPicsData(num, callback, function(pics, callback1){
+	getPicsData(num, callback, (function(pics, callback1){
 		var count = 0;
 		var images = [];
 
@@ -138,7 +137,7 @@ function setUpPictureLoading(){
 		loadPic(picIndex, content.append);
 		/*content.scroll(function(){
 
-			
+
 			//console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
 			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight-100){
 				content.append(loadPic(5));
