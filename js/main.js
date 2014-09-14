@@ -101,7 +101,7 @@ function loadPic(pics){
 function CreateImage(picDat){
 	var div = createElt("div", {"class":"imageWrapper"});
 		var img = createElt("img", { "src":"http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/pics/"+picDat.fileName, "onerror":"imageRemove(this);"});
-		div.appendChild(img);
+		
 
 		//Upvotes
 		var voteDiv = createElt("div", {"class":"voteDivWrapper"});
@@ -110,7 +110,7 @@ function CreateImage(picDat){
 
 		var upVoteCounter = createElt("span", null, "+1");
 		voteDiv.appendChild(upVoteCounter);
-
+		div.appendChild(img);
 
 		voteDiv.appendChild(upDiv);
 		voteDiv.appendChild(downDiv);

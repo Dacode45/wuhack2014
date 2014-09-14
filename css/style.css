@@ -177,10 +177,10 @@ div.imageWrapper{
 
 .imageWrapper img{
 
-	display: inline-block;
-	margin: auto;
-	max-width: 90%;
-	float: left;
+	display: block;
+	margin-left:  auto;
+	float:left; 
+	width: 90%;
 	-moz-transition: all 1s;
     -ms-transition: all 1s;
     -o-transition: all 1s;
@@ -189,9 +189,10 @@ div.imageWrapper{
 }
 
 .voteDivWrapper{
+	display: inline-block;
 	height: 100%;
 	width: 20px;
-	float: right;
+	//float: left;
 	text-align: center;
 	color: #a976ca;
 }
@@ -240,7 +241,7 @@ div.imageWrapper{
 	display: none;
 	background: black;
 	color:white;
-	margin: 10px;
+	
 }
 
 .title{
