@@ -180,7 +180,7 @@ function setUpPictureLoading(){
 
 
 			//console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
-			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight-200){
+			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight-500){
 				picIndex++;
 				loadPics(5);
 
