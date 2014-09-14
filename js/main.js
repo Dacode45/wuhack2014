@@ -131,12 +131,14 @@ function CreateImage(picDat){
 		commentDiv.appendChild(commentInput);
 		commentDiv.appendChild(submitButton);
 
-		div.appendChild(commentDiv);
+		//div.appendChild(commentDiv);
 
 		//Set up Clicking
 		$(upDiv).on("click", upVote);
 		$(downDiv).on("click", downVote);
 		$(img).on("click", toggleOverlay);
+
+
 
 	return div;
 }
