@@ -2,10 +2,47 @@
 $(document).ready(
 	function(){
 		setUpPictureLoading();
-		var uploadButton = $("#upload-button");
-		uploadButton.on("click", openUploadDiv);
+		setUpUploadButton();
+
+		var myOptions = {
+			zoom:4,
+			mapTypeControl:true,
+			mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+			navigationControl: true,
+			navigationControlOptions: {style:google.maps.NavigationControlStyle.SMALL},
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+
+		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+
+
+		if(geo_position_js.init()){
+			geo_position_js.getCurrentPosition(showPosition, null);
+		}else
+			alert("Functionality not available");
 	});
 
+function showPosition(p){
+	var pos=new google.maps.LatLng(p.coords.latitude,p.coords.longitude);
+	console.log(pos);
+	map.setCenter(pos);
+	map.setZoom(14);
+
+	var infowindow = new google.maps.InfoWindow({
+	    content: "<strong>yes</strong>"
+	});
+
+	var marker = new google.maps.Marker({
+	    position: pos,
+	    map: map,
+	    title:"You are here"
+	});
+
+	google.maps.event.addListener(marker, 'click', function() {
+	  infowindow.open(map,marker);
+	});
+}
 
 function stringify(o){
 	var cache = [];
@@ -55,18 +92,11 @@ function createRandomImages(num, maxWidth, minWidth, maxHeight, minHeight){
 		var height = Math.floor(Math.random()*maxHeight + minHeight);
 		images[count] = createElt("img", {"src":"http://placehold.it/"+width+"x"+height})
 		
-		$(images[count]).click(function(e){
-			createEnlargedVersion($(this));
-		});
 		count++;
 	}
 	return images;
 }
 
-function createEnlargedVersion(img){
-	img = img.clone().detach();
-	console.log(img);
-}
 
 
 function loadPic(num){
@@ -186,4 +216,10 @@ function closeUploadDiv(up){
 	
 	$("#upload-button").off("click", closeUploadDiv);
 	$("#upload-button").on("click", openUploadDiv);
+}
+
+function setUpUploadButton(){
+
+		var uploadButton = $("#upload-button");
+		uploadButton.on("click", openUploadDiv);
 }
