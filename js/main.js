@@ -22,7 +22,6 @@ $(document).ready(
 		}else
 			alert("Functionality not available");
 
-		getPicsData(0);
 	});
 
 function showPosition(p){
