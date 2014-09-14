@@ -74,7 +74,8 @@ function getImagesFromDataBase(num){
 
 
 function loadPics(num){
-	
+	recursionDept = 0;
+	recursionStop = 0;
 	getImagesFromDataBase(num);
 	//getPicsData(0);
 }
@@ -126,6 +127,11 @@ function CreateImage(picDat){
 		//Commenting
 		var commentDiv = createElt("div", {"class":"commentWrapper"});
 		var commentInput = createElt("input", {"type":"text", "name":picDat.fileName});
+		var submitButton = createElt("img", {"src":"picaboo.png", "width":"30px"}, "Comment");
+		commentDiv.appendChild(commentInput);
+		commentDiv.appendChild(submitButton);
+
+		div.appendChild(commentDiv);
 
 		//Set up Clicking
 		$(upDiv).on("click", upVote);
@@ -171,8 +177,9 @@ function setUpPictureLoading(){
 		content.scroll(function(){
 
 
-			console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
-			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight-100){
+			//console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
+			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight-200){
+				picIndex++;
 				loadPics(5);
 
 			}
@@ -181,6 +188,7 @@ function setUpPictureLoading(){
 }
 
 function getPicsData(pageIndex, callback, times) {	
+	//console.log(pageIndex +"," + recursionStop + "," + recursionDept);
 	$.ajax({
 	type: 'POST',
 	url: 'http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/getPics.php',

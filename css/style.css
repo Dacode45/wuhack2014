@@ -190,7 +190,7 @@ div.imageWrapper{
 
 .voteDivWrapper{
 	height: 100%;
-	width: 30px;
+	width: 20px;
 	float: right;
 	text-align: center;
 	color: #a976ca;
@@ -252,6 +252,8 @@ div.imageWrapper{
 	position: absolute;
 	bottom: 0;
 }
+
+
 
 #imagePreveiw {
 	position: relative;
