@@ -1,22 +1,17 @@
 <?php
-session_start();
-
 // Get the filename and make sure it is valid
-
-$filename = htmlentities(basename($_FILES['uploadedfile']['name']));
+$filename = basename($_FILES['uploadedfile']['name']);
 if( !preg_match('/^[\w_\.\-]+$/', $filename) ){
 	echo sprintf("Invalid filename: %s", $filename);
 	exit;
 }
 
-$full_path = sprintf("/pics/%s", $filename);
-echo $full_path;
-
+$full_path = sprintf("pics/%s", $filename);
 if( move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $full_path) ){
 	header("Location: photo.php");
 	exit;
 }else{
-	echo "upload failure";
+	echo sprintf("upload failure:", $filename);
 	exit;
 }
 ?>
