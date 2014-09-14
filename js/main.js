@@ -103,9 +103,9 @@ function CreateImage(picDat){
 		div.appendChild(img);
 
 		//Upvotes
-		var voteDiv = createElt("div", {"class":"voteDivWrapper"}, "+");
-		var upDiv = createElt("div", {"class":"upVote"}, "-");
-		var downDiv = createElt("div", {"class":"downVote"});
+		var voteDiv = createElt("div", {"class":"voteDivWrapper"});
+		var upDiv = createElt("div", {"class":"upVote"}, "+");
+		var downDiv = createElt("div", {"class":"downVote"}, "-");
 
 		var upVoteCounter = createElt("span", null, "+1");
 		voteDiv.appendChild(upVoteCounter);

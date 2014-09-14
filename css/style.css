@@ -206,6 +206,7 @@ div.imageWrapper{
 	width: 100%;
 	background: #a976ca;
 	opacity: 0.4;
+	color: #ebebeb;
 }
 
 .downVote{
@@ -219,6 +220,7 @@ div.imageWrapper{
 	width: 100%;
 	background: #a976ca;
 	opacity: 0.4;
+	color: #ebebeb;
 }
 
 .downVote:hover, .upVote:hover {
