@@ -206,7 +206,7 @@ label {
 #imagePreveiw  img {
 	display: block;
 	margin: auto;
-	margin-top: 10px;
+	margin-top: 0px;
 	max-width: 90%;
 	max-height: 90%;
 
@@ -214,25 +214,37 @@ label {
 
 .footer-button, #submit {
 	position: relative;
-	background-color: #686868;
-	color: white;
+	background-color: #a976ca;
+	color: #ebebeb;
+	font-family: 'Lato', Arial, sans-serif;
 	width: 100px;
 	height: 40px;
 	border: none;
 	display: inline-block;
-	border-radius: 1px;
-	-webkit-border-radius: 1px;
-	-moz-border-radius: 1px;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
+.footer-button:hover {
+	background-color: #b78dd2;
+}
+#submit:hover {
+	background-color: #b78dd2;
 }
 
 .footer-button {
 	margin: auto;
-	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 	cursor: pointer;
 }
 
 #submit {
-	margin-top: -10px;
+	margin-top: 6px;
+	height: 48px;
+	padding-bottom: 20px;
 }
 
 #divider {
@@ -256,8 +268,6 @@ label {
 .show {
 	display: block;
 }
-
-
 
 
 
