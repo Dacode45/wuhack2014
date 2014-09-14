@@ -3,47 +3,9 @@ $(document).ready(
 	function(){
 		setUpPictureLoading();
 		setUpUploadButton();
-
-		var myOptions = {
-			zoom:4,
-			mapTypeControl:true,
-			mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
-			navigationControl: true,
-			navigationControlOptions: {style:google.maps.NavigationControlStyle.SMALL},
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		}
-
-		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-
-
-
-		if(geo_position_js.init()){
-			geo_position_js.getCurrentPosition(showPosition, null);
-		}else
-			alert("Functionality not available");
-
 	});
 
-function showPosition(p){
-	var pos=new google.maps.LatLng(p.coords.latitude,p.coords.longitude);
-	console.log(pos);
-	map.setCenter(pos);
-	map.setZoom(14);
 
-	var infowindow = new google.maps.InfoWindow({
-	    content: "<strong>yes</strong>"
-	});
-
-	var marker = new google.maps.Marker({
-	    position: pos,
-	    map: map,
-	    title:"You are here"
-	});
-
-	google.maps.event.addListener(marker, 'click', function() {
-	  infowindow.open(map,marker);
-	});
-}
 
 function stringify(o){
 	var cache = [];
@@ -98,63 +60,62 @@ function createRandomImages(num, maxWidth, minWidth, maxHeight, minHeight){
 	return images;
 }
 
+var picIndex = 0;
+
+var recursionDept = 0;
+var recursionStop = 0;
 function getImagesFromDataBase(num){
-	
-	var count = 0;
-	while(count < num){
-	console.log(count);
-		getPicsData(picIndex, (function(pics){
-			console.log(picIndex + ","+pics[0].fileName);
-		var count1 = 0;
-		var images = [];
-
-		picIndex+=pics.length;	
-		while(count1 < pics.length){
-			images[count] = createElt("img", {"src":"http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/pics/"+pics[count1].fileName});
-		count1++;
-
-		}
-
-		$("#content").append(images);
-	}));
-	count++;
-	}
+		recursionStop = num;
+		getPicsData(picIndex, loadPic, recursionDept++);
 	
 
 
 }
 
 
-var picIndex = 0;
-function loadPic(num){
+function loadPics(num){
 	
 	getImagesFromDataBase(num);
 	//getPicsData(0);
+}
+function loadPic(pics){
+	if(recursionDept <= recursionStop){
+		var count1 = 0;
+		var images = [];
+		console.log(picIndex);
+		if(pics[0]){
+			while(count1 < pics.length){
+				picIndex++;
+				images[count1] = createElt("img", {"src":"http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/pics/"+pics[count1].fileName});
+			count1++;
+
+			}
+
+			$("#content").append(images);
+		}
+		getPicsData(picIndex, loadPic, recursionDept++);
+	}else
+		recursionStop = 0;
 }
 
 function setUpPictureLoading(){
 
 		var content = $("#content");
 		//console.log("In setUpPics")
-		loadPic(5);
+		loadPics(5);
 		content.scroll(function(){
 
 
 			//console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
 			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight-100){
-				loadPic(5);
+				loadPics(5);
 
-				var images = $("#content img");
-				console.log(images.size());
-				if(images.size() > 30){
-					images.slice(0,15).remove();
-				}
 			}
 		});
 
 }
 
-function getPicsData(pageIndex, callback) {	
+function getPicsData(pageIndex, callback, times) {	
 	$.ajax({
 	type: 'POST',
 	url: 'http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/getPics.php',
@@ -163,7 +124,7 @@ function getPicsData(pageIndex, callback) {
 	success: function(msg) {
 		var jsonData = JSON.parse(msg);
 		data = jsonData.data;
-		callback(data);
+		callback(data, times);
 		/*for (i = 0; i < data.length; i++) {
 			picData = data[i];
 			alert(picData.name);
