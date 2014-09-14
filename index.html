@@ -40,13 +40,6 @@
 
             <div id="footer">
                 <div id="upload-button"></div>
-                <form id="formContainer" action="?" method="post" enctype="multipart/form-data">
-
-                    File: <img id= "fileImage" type = "image" src ="http://upload.wikimedia.org/wikipedia/commons/c/ca/Button-Lightblue.svg" width="30px"/>
-                    <input id="file" type="file" name="file" >
-                    <input type="hidden" name="MAX_FILE_SIZE" value="600000000">
-                    <input id="submit" name="submit" type="submit" value="Submit">
-                </form>
             </div>
 
 
@@ -63,8 +56,14 @@
         //save the picture
 
           ?> </div>
-
-
+          <!--Hidden -->
+           <form id="formContainer" action="?" method="post" enctype="multipart/form-data">
+                    
+                    File: <img id= "fileImage" type = "image" src ="http://upload.wikimedia.org/wikipedia/commons/c/ca/Button-Lightblue.svg" width="30px"/>
+                    <input id="file" type="file" name="file" >
+                    <input type="hidden" name="MAX_FILE_SIZE" value="600000000">
+                    <input id="submit" name="submit" type="submit" value="Submit">
+          </form>
 
 
 

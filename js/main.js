@@ -3,54 +3,8 @@ $(document).ready(
 	function(){
 		setUpPictureLoading();
 		var uploadButton = $("#upload-button");
-		uploadButton.click( function(){
-
-			
-			var uploadDiv = createUploadDiv();
-			$("#footer").append(uploadDiv);
-			
-			$("#footer").animate({height: "40%"}).append(uploadDiv);
-			$("#fileImage").click(function(){
-				$("#file").change(function(){
-
-
-
-					var files = this.files || [];
-					fileDisplayArea = document.getElementById("imagePreveiw");
-					console.log(files[0]);
-					var file = files[0];
-					var imageType = /image.*/;
-
-					if (file.type.match(imageType)) {
-					  var reader = new FileReader();
-
-					  reader.onload = function(e) {
-					    fileDisplayArea.innerHTML = "";
-
-					    // Create a new image.
-					    var img = new Image();
-					    // Set the img src property using the data URL.
-					    img.src = reader.result;
-
-					    // Add the image to the page.
-					    fileDisplayArea.appendChild(img);
-					  }
-
-					  reader.readAsDataURL(file); 
-					} else {
-					  fileDisplayArea.innerHTML = "File not supported!";
-					}
-				});
-				$("#file").click();
-				
-			});
-
-		uploadButton.click(closeUploadDiv);
-		});
-
-
-	}
-);
+		uploadButton.on("click", openUploadDiv);
+	});
 
 
 function stringify(o){
@@ -139,8 +93,59 @@ function createUploadDiv(){
 	return uploadDiv;
 }
 
-function closeUploadDiv(){
+function openUploadDiv(){
+
+			var uploadDiv = createUploadDiv();
+			$("#footer").append(uploadDiv);
+			
+			$("#footer").animate({height: "40%"}).append(uploadDiv);
+			$("#fileImage").click(function(){
+				console.log("hi");
+				$("#file").change(function(){
+
+
+
+
+					var files = this.files || [];
+					fileDisplayArea = document.getElementById("imagePreveiw");
+					console.log(files[0]);
+					var file = files[0];
+					var imageType = /image.*/;
+
+					if (file.type.match(imageType)) {
+					  var reader = new FileReader();
+
+					  reader.onload = function(e) {
+					    fileDisplayArea.innerHTML = "";
+
+					    // Create a new image.
+					    var img = new Image();
+					    // Set the img src property using the data URL.
+					    img.src = reader.result;
+
+					    // Add the image to the page.
+					    fileDisplayArea.appendChild(img);
+					  }
+
+					  reader.readAsDataURL(file); 
+					} else {
+					  fileDisplayArea.innerHTML = "File not supported!";
+					}
+				});
+				$("#file").click();
+
+				
+				
+});
+			$("#upload-button").off("click", openUploadDiv);
+				$("#upload-button").on("click", closeUploadDiv);
+}
+
+function closeUploadDiv(up){
 
 	$("#footer").animate({height: "10%"})
 	$(uploadDiv).remove();
+	
+	$("#upload-button").off("click", closeUploadDiv);
+	$("#upload-button").on("click", openUploadDiv);
 }
