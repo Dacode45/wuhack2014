@@ -102,8 +102,8 @@ function createRandomImages(num, maxWidth, minWidth, maxHeight, minHeight){
 function getImagesFromDataBase(num, callback){
 	
 	
-	//console.log("In getImages")
-	getPicsData(num, function(pics){
+	console.log(callback);
+	getPicsData(num, callback, function(pics, callback1){
 		var count = 0;
 		var images = [];
 
@@ -113,8 +113,9 @@ function getImagesFromDataBase(num, callback){
 			console.log(stringify(pics));
 			images[count] = createElt("img", {"src":pics[count].fileName});
 		count++;
-		}	
-		callback(images);
+		}
+		console.log(callback1);	
+		callback1(images);
 	});
 
 
@@ -124,7 +125,7 @@ function getImagesFromDataBase(num, callback){
 var picIndex = 0;
 function loadPic(num, callback){
 	num = num || 5;
-	//console.log("In load pic")
+	console.log(callback);
 	getImagesFromDataBase(num, callback);
 	//getPicsData(0);
 }
@@ -149,7 +150,7 @@ function setUpPictureLoading(){
 		});
 }
 
-function getPicsData(pageIndex, callback) {	
+function getPicsData(pageIndex, callback1, callback2) {	
 	$.ajax({
 	type: 'POST',
 	url: 'getPics.php',
@@ -157,7 +158,7 @@ function getPicsData(pageIndex, callback) {
 	success: function(msg) {
 		var jsonData = JSON.parse(msg);
 		data = jsonData.data;
-		callback(data);
+		callback2(data, callback1);
 		/*for (i = 0; i < data.length; i++) {
 			picData = data[i];
 			alert(picData.name);
