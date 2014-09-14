@@ -2,10 +2,10 @@
 require 'database.php';
 
 $pageIndex = (int)htmlentities($_POST['pageIndex']);
-$startingPicIndex = 5 * $pageIndex;
+$startingPicIndex = 1 * $pageIndex;
 
 $stmt = $mysqli->prepare(
-        sprintf("select name, rating, fileName, timeCreated from pics order by timeCreated LIMIT %s,5", $startingPicIndex));
+        sprintf("select name, rating, fileName, timeCreated from pics order by timeCreated LIMIT %s,1", $startingPicIndex));
 if(!$stmt){
     printf("Query Prep Failed: %s\n", $mysqli->error);
     echo json_encode(array(
