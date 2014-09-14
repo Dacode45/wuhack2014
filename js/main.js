@@ -126,7 +126,7 @@ function CreateImage(picDat){
 
 		//Commenting
 		var commentDiv = createElt("div", {"class":"commentWrapper"});
-		var commentInput = createElt("input", {"type":"text", "name":picDat.fileName});
+		var commentInput = createElt("input", {"type":"text", "name":picDat.fileName, "class":"textField"});
 		var submitButton = createElt("img", {"src":"picaboo.png", "width":"30px"}, "Comment");
 		commentDiv.appendChild(commentInput);
 		commentDiv.appendChild(submitButton);
