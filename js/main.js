@@ -98,36 +98,37 @@ function createRandomImages(num, maxWidth, minWidth, maxHeight, minHeight){
 	return images;
 }
 
-function getImagesFromDataBase(num, callback){
+function getImagesFromDataBase(num){
 	
-	
-	getPicsData(num, callback, (function(pics, callback1){
-		var count = 0;
+	var count = 0;
+	while(count < num){
+	console.log(count);
+		getPicsData(picIndex, (function(pics){
+			console.log(picIndex + ","+pics[0].fileName);
+		var count1 = 0;
 		var images = [];
 
-		picIndex+=pics.length-1;	
-		while(count < 1){//pics.length){
-			console.log(callback1);
-			console.log(stringify(pics[0]));
-			images[count] = createElt("img", {"src":"http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/pics/"+pics[count].fileName});
-		console.log(picIndex + "," + images[count]);
-		count++;
+		picIndex+=pics.length;	
+		while(count1 < pics.length){
+			images[count] = createElt("img", {"src":"http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/pics/"+pics[count1].fileName});
+		count1++;
 
 		}
 
-		console.log(callback1);	
 		$("#content").append(images);
-		//callback1(images);
 	}));
+	count++;
+	}
+	
 
 
 }
 
 
 var picIndex = 0;
-function loadPic(num, callback){
-	console.log(callback);
-	getImagesFromDataBase(num, callback);
+function loadPic(num){
+	
+	getImagesFromDataBase(num);
 	//getPicsData(0);
 }
 
@@ -135,13 +136,13 @@ function setUpPictureLoading(){
 
 		var content = $("#content");
 		//console.log("In setUpPics")
-		loadPic(picIndex, content.append);
-		/*content.scroll(function(){
+		loadPic(5);
+		content.scroll(function(){
 
 
 			//console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
 			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight-100){
-				content.append(loadPic(5));
+				loadPic(5);
 
 				var images = $("#content img");
 				console.log(images.size());
@@ -150,10 +151,10 @@ function setUpPictureLoading(){
 				}
 			}
 		});
-*/
+
 }
 
-function getPicsData(pageIndex, callback1, callback2) {	
+function getPicsData(pageIndex, callback) {	
 	$.ajax({
 	type: 'POST',
 	url: 'http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/getPics.php',
@@ -162,8 +163,7 @@ function getPicsData(pageIndex, callback1, callback2) {
 	success: function(msg) {
 		var jsonData = JSON.parse(msg);
 		data = jsonData.data;
-		console.log(callback2);
-		callback2(data, callback1);
+		callback(data);
 		/*for (i = 0; i < data.length; i++) {
 			picData = data[i];
 			alert(picData.name);
