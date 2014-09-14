@@ -159,6 +159,7 @@ function getPicsData(pageIndex, callback1, callback2) {
 	success: function(msg) {
 		var jsonData = JSON.parse(msg);
 		data = jsonData.data;
+		console.log(callback2);
 		callback2(data, callback1);
 		/*for (i = 0; i < data.length; i++) {
 			picData = data[i];
