@@ -165,6 +165,7 @@ label {
 */
 
 div.imageWrapper{
+	position: relative;
 	width: 90%;
 	overflow: auto;
     overflow-x: hidden;
@@ -191,6 +192,8 @@ div.imageWrapper{
 	height: 100%;
 	width: 8%;
 	float: right;
+	text-align: center;
+	color: #a976ca;
 }
 
 .upVote{
@@ -223,6 +226,22 @@ div.imageWrapper{
 	background: #2d2d2d;
 	padding-bottom: 30px;
 	overflow: hidden;
+}
+
+.overlay{
+	background: black;
+	color:white;
+	margin: 10px;
+}
+
+.title{
+	position: absolute;
+	top: 0;
+}
+
+.comment{
+	position: absolute;
+	bottom: 0;
 }
 
 #imagePreveiw {

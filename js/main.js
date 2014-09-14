@@ -81,36 +81,73 @@ function loadPics(num){
 function loadPic(pics){
 	if(recursionDept <= recursionStop){
 		var count1 = 0;
-		var images = [];
-		console.log(picIndex);
+		var imageDivs = [];
+		//console.log(picIndex);
 		if(pics[0]){
 			while(count1 < pics.length){
 				picIndex++;
-				images[count1] = createElt("img", {"src":"http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/pics/"+pics[count1].fileName});
+				imageDivs[count1] = CreateImage(pics[0]);
 			count1++;
 
 			}
-			var imageDivs = images.map(function(img){
-				var div = createElt("div", {"class":"imageWrapper"});
-				div.appendChild(img);
-
-				var voteDiv = createElt("div", {"class":"voteDivWrapper"});
-				var upDiv = createElt("div", {"class":"upVote"});
-				var downDiv = createElt("div", {"class":"downVote"});
-
-				voteDiv.appendChild(upDiv);
-				voteDiv.appendChild(downDiv);
-
-				div.appendChild(voteDiv);
-				
-
-				return div;
-			})
 			$("#content").append(imageDivs);
 		}
 		getPicsData(picIndex, loadPic, recursionDept++);
 	}else
 		recursionStop = 0;
+}
+
+function CreateImage(picDat){
+	var div = createElt("div", {"class":"imageWrapper"});
+		var img = createElt("img", { "src":"http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/pics/"+picDat.fileName, "alt":"picaboo"});
+		div.appendChild(img);
+
+		//Upvotes
+		var voteDiv = createElt("div", {"class":"voteDivWrapper"});
+		var upDiv = createElt("div", {"class":"upVote"});
+		var downDiv = createElt("div", {"class":"downVote"});
+
+		var upVoteCounter = createElt("span", null, "1");
+		voteDiv.appendChild(upVoteCounter);
+
+
+		voteDiv.appendChild(upDiv);
+		voteDiv.appendChild(downDiv);
+
+		div.appendChild(voteDiv);
+
+		var titleDiv = createElt("div", {"class":"title overlay"}, "Title");
+		var commentDiv = createElt("div", {"class":"comment overlay"}, "Comment");
+		
+		div.appendChild(titleDiv);
+		div.appendChild(commentDiv);
+
+		//Set up Clicking
+		$(upDiv).on("click", upVote);
+		$(downDiv).on("click", downVote);
+
+	return div;
+}
+
+
+function upVote(voteButton){
+	var value = $(voteButton.currentTarget).parent(".voteDivWrapper").children("span");
+	var text = Number(value.text());
+	text++;
+	console.log(value);
+	value.text(text);
+	$(voteButton.currentTarget).off("click",upVote);
+}
+
+
+function downVote(voteButton){
+	var value = $(voteButton.currentTarget).parent(".voteDivWrapper").children("span");
+	var text = Number(value.text());
+	text--;
+	console.log(value);
+	value.text(text);
+	$(voteButton.currentTarget).off("click",downVote);
+
 }
 
 function setUpPictureLoading(){
