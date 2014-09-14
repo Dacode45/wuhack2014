@@ -31,6 +31,16 @@ body {
 	padding-bottom: 25px;
 }
 
+#logo {
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+#logo-container {
+	text-align: center;
+	display: block;
+}
+
 #content {
 	position: relative;
 	height: 90%;
@@ -85,6 +95,7 @@ h1 {
 	margin-top: 0px;
 	margin-bottom: 0px;
 	font-family: 'Lato', Arial, sans-serif;
+	display: inline-block;
 }
 
 #boo {
@@ -100,7 +111,6 @@ h1 {
 }
 
 #file {
-	
 	display: none;
 }
 
