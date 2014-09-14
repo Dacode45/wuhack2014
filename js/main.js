@@ -71,8 +71,8 @@ function createEnlargedVersion(img){
 
 function loadPic(num){
 	num = num || 5;
-	//return createRandomImages(num);
-	return getPics(num);
+	return createRandomImages(num);
+	//return getPics(num);
 }
 
 function setUpPictureLoading(){
@@ -93,14 +93,14 @@ function setUpPictureLoading(){
 		});
 }
 
-function getPics(int numberOfPics){
+function getPics(numberOfPics){
 
 	//call picture finder
 
 
 
-	return var filenames = phpshit(numberOfPics);
-
+	var filenames;
+	return filenames;
 
 	//send ajax request
 
