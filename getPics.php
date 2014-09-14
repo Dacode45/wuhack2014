@@ -8,7 +8,7 @@ header('Access-Control-Allow-Headers: Content-Type, Content-Range, Content-Dispo
 $picsSoFar = (int)htmlentities($_POST['pageIndex']);
 
 $stmt = $mysqli->prepare(
-        sprintf("select name, rating, fileName, timeCreated from pics order by timeCreated ASC LIMIT %s,1", $picsSoFar));
+        sprintf("select name, rating, fileName, timeCreated from pics order by timeCreated DESC LIMIT %s,1", $picsSoFar));
 if(!$stmt){
     printf("Query Prep Failed: %s\n", $mysqli->error);
     echo json_encode(array(
