@@ -104,8 +104,8 @@ function CreateImage(picDat){
 
 		//Upvotes
 		var voteDiv = createElt("div", {"class":"voteDivWrapper"});
-		var upDiv = createElt("div", {"class":"upVote"});
-		var downDiv = createElt("div", {"class":"downVote"});
+		var upDiv = createElt("div", {"class":"upVote"}, "+");
+		var downDiv = createElt("div", {"class":"downVote"}, "-");
 
 		var upVoteCounter = createElt("span", null, "+1");
 		voteDiv.appendChild(upVoteCounter);
@@ -149,12 +149,6 @@ function upVote(voteButton){
 	var value = $(voteButton.currentTarget).parent(".voteDivWrapper").children("span");
 	var text = Number(value.text());
 	text++;
-	if(text>0){
-		text = "+"+text;
-	}else
-	{
-		text = "-"+text;
-	}
 	value.text(text);
 	$(voteButton.currentTarget).off("click",upVote);
 }
@@ -164,12 +158,7 @@ function downVote(voteButton){
 	var value = $(voteButton.currentTarget).parent(".voteDivWrapper").children("span");
 	var text = Number(value.text());
 	text--;
-	if(text>0){
-		text = "+"+text;
-	}else
-	{
-		text = "-"+text;
-	}value.text(text);
+	value.text(text);
 	$(voteButton.currentTarget).off("click",downVote);
 
 }

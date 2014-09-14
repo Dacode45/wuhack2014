@@ -190,7 +190,7 @@ div.imageWrapper{
 
 .voteDivWrapper{
 	height: 100%;
-	width: 8%;
+	width: 30px;
 	float: right;
 	text-align: center;
 	color: #a976ca;
@@ -201,10 +201,12 @@ div.imageWrapper{
 	top:0;
 	display: block;
 	margin-top: 1em;
-	margin-bottom: 1em;
+	margin-bottom: 0.5em;
 	height: 30px;
 	width: 100%;
-	background: green;
+	background: #a976ca;
+	opacity: 0.4;
+	color: #ebebeb;
 }
 
 .downVote{
@@ -216,7 +218,13 @@ div.imageWrapper{
 	margin: auto;
 	height: 30px;
 	width: 100%;
-	background: red;
+	background: #a976ca;
+	opacity: 0.4;
+	color: #ebebeb;
+}
+
+.downVote:hover, .upVote:hover {
+	opacity: 1;
 }
 
 #uploadDiv {
