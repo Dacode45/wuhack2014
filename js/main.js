@@ -136,7 +136,7 @@ function setUpPictureLoading(){
 		var content = $("#content");
 		//console.log("In setUpPics")
 		loadPic(picIndex, content.append);
-		/*content.scroll(function(){
+		/*content.scroll(function(){sdfd
 			//console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
 			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight-100){
 				content.append(loadPic(5));
