@@ -204,6 +204,23 @@ label {
 
 }
 
+.footer-button, #submit {
+	background-color: yellow;
+	color: transparent;
+	width: 60px;
+	height: 30px;
+	border: 2px solid purple;
+	display: inline-block;
+	margin: 0;
+}
+
+
+
+
+
+
+
+
 
 
 

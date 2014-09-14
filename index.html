@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Picaboo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -58,14 +58,19 @@
         //save the picture
 
           ?> </div>
+
+
           <!--Hidden -->
-           <form id="formContainer" action="?" method="post" enctype="multipart/form-data">
-                    
-                    File: <img id= "fileImage" type = "image" src ="http://upload.wikimedia.org/wikipedia/commons/c/ca/Button-Lightblue.svg" width="30px"/>
-                    <input id="file" type="file" name="file" >
-                    <input type="hidden" name="MAX_FILE_SIZE" value="600000000">
-                    <input id="submit" name="submit" type="submit" value="Submit">
-          </form>
+          <form id="formContainer" action="?" method="post" enctype="multipart/form-data">
+
+            <div id="fileImage" class="footer-button"></div>
+            <input id="file" type="file" name="file" >
+            <input type="hidden" name="MAX_FILE_SIZE" value="600000000">
+            <div class="footer-button">
+                <input id="submit" name="submit" type="submit" value="Submit">
+            </div>
+        </form>
+
 
 
 
@@ -75,15 +80,15 @@
           <script src="js/plugins.js"></script>
           <script src="js/main.js"></script>
 
-          <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-          <script>
-          (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+        (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-          e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-          e.src='//www.google-analytics.com/analytics.js';
-          r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-          ga('create','UA-XXXXX-X');ga('send','pageview');
-          </script>
-      </div>
-  </body>
-  </html>
+        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+        e.src='//www.google-analytics.com/analytics.js';
+        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+        ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </div>
+</body>
+</html>
