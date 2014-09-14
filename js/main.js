@@ -112,7 +112,9 @@ function getImagesFromDataBase(num, callback){
 			console.log("working so far");
 			console.log(stringify(pics));
 			images[count] = createElt("img", {"src":pics[count].fileName});
+		console.log(picIndex + "," + images[count]);
 		count++;
+
 		}
 		console.log(callback1);	
 		callback1(images);
@@ -124,7 +126,6 @@ function getImagesFromDataBase(num, callback){
 
 var picIndex = 0;
 function loadPic(num, callback){
-	num = num || 5;
 	console.log(callback);
 	getImagesFromDataBase(num, callback);
 	//getPicsData(0);
