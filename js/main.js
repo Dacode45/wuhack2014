@@ -107,8 +107,8 @@ function getImagesFromDataBase(num, callback){
 
 		picIndex+=pics.length-1;	
 		while(count < 1){//pics.length){
-			console.log("working so far");
-			console.log(stringify(pics));
+			console.log(callback1);
+			console.log(stringify(pics[0]));
 			images[count] = createElt("img", {"src":"pics/"+pics[count].fileName});
 		console.log(picIndex + "," + images[count]);
 		count++;
@@ -154,7 +154,8 @@ function setUpPictureLoading(){
 function getPicsData(pageIndex, callback1, callback2) {	
 	$.ajax({
 	type: 'POST',
-	url: 'getPics.php',
+	url: 'http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/getPics.php',
+	crossDomain:true,
 	data: {'pageIndex': pageIndex},
 	success: function(msg) {
 		var jsonData = JSON.parse(msg);
