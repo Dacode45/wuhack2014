@@ -158,12 +158,24 @@ label {
 }
 */
 
-#content > img {
+#content > img.normal{
 	display: block;
 	margin: auto;
 	margin-top: 10px;
 	max-width: 90%;
 	max-height: 90%;
+	-moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    -webkit-transition: all 1s;
+    transition: all 1s;
+}
+*/
+ .enlarged{
+	position: absolute;
+	margin:auto;
+	display: block;
+	max-width: 100%;
 }
 
 #uploadDiv{

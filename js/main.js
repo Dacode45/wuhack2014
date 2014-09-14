@@ -53,7 +53,13 @@ function createRandomImages(num, maxWidth, minWidth, maxHeight, minHeight){
 	while(count < num){
 		var width = Math.floor(Math.random()*maxHeight + minHeight);
 		var height = Math.floor(Math.random()*maxHeight + minHeight);
-		images[count] = createElt("img", {"src":"http://placehold.it/"+width+"x"+height})
+		images[count] = createElt("img", {"src":"http://placehold.it/"+width+"x"+height, "class":"normal"})
+		
+		$(images[count]).click(function(e){
+			$(this).toggleClass("enlarged");
+			$(this).toggleClass("normal");
+		});
+
 		count++;
 	}
 	return images;
@@ -70,7 +76,7 @@ function setUpPictureLoading(){
 		content.append(loadPic(5));
 		content.scroll(function(){
 			//console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
-			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight){
+			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight-100){
 				content.append(loadPic(5));
 
 				var images = $("#content img");
