@@ -136,7 +136,7 @@ function setUpPictureLoading(){
 		//console.log("In setUpPics")
 		loadPic(picIndex, content.append);
 		content.append(loadPic(5));
-		content.scroll(function(){
+		/*content.scroll(function(){
 			//console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
 			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight-100){
 				content.append(loadPic(5));
@@ -148,6 +148,7 @@ function setUpPictureLoading(){
 				}
 			}
 		});
+*/
 }
 
 function getPicsData(pageIndex, callback1, callback2) {	
