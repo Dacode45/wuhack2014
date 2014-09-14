@@ -21,6 +21,8 @@ $(document).ready(
 			geo_position_js.getCurrentPosition(showPosition, null);
 		}else
 			alert("Functionality not available");
+
+		getPicsData(0);
 	});
 
 function showPosition(p){
@@ -97,17 +99,41 @@ function createRandomImages(num, maxWidth, minWidth, maxHeight, minHeight){
 	return images;
 }
 
+function getImagesFromDataBase(num, callback){
+	
+	
+	//console.log("In getImages")
+	getPicsData(num, function(pics){
+		var count = 0;
+		var images = [];
+
+		picIndex+=pics.length-1;	
+		while(count < pics.length){
+			console.log("working so far");
+			console.log(stringify(pics));
+			images[count] = createElt("img", {"src":pics[count].fileName});
+		count++;
+		}	
+		callback(images);
+	});
 
 
-function loadPic(num){
+}
+
+
+var picIndex = 0;
+function loadPic(num, callback){
 	num = num || 5;
-	return createRandomImages(num);
+	//console.log("In load pic")
+	getImagesFromDataBase(num, callback);
 	//getPicsData(0);
 }
 
 function setUpPictureLoading(){
 
 		var content = $("#content");
+		//console.log("In setUpPics")
+		loadPic(picIndex, content.append);
 		content.append(loadPic(5));
 		content.scroll(function(){
 			//console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
@@ -123,7 +149,7 @@ function setUpPictureLoading(){
 		});
 }
 
-function getPicsData(pageIndex) {	
+function getPicsData(pageIndex, callback) {	
 	$.ajax({
 	type: 'POST',
 	url: 'getPics.php',
@@ -131,12 +157,13 @@ function getPicsData(pageIndex) {
 	success: function(msg) {
 		var jsonData = JSON.parse(msg);
 		data = jsonData.data;
-		for (i = 0; i < data.length; i++) {
+		callback(data);
+		/*for (i = 0; i < data.length; i++) {
 			picData = data[i];
 			alert(picData.name);
 			//TODO
 			//add the images to the list.
-		}
+		}*/
 	}
 	});
 
