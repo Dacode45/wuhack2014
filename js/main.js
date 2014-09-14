@@ -67,7 +67,8 @@ function createRandomImages(num, maxWidth, minWidth, maxHeight, minHeight){
 
 function loadPic(num){
 	num = num || 5;
-	return createRandomImages(num);
+	//return createRandomImages(num);
+	return getPics(num);
 }
 
 function setUpPictureLoading(){
@@ -86,6 +87,13 @@ function setUpPictureLoading(){
 				}
 			}
 		});
+}
+
+function getPics(int numberOfPics){
+
+	//call picture finder
+	return var filenames = phpshit(numberOfPics);
+
 }
 
 function createUploadDiv(){
