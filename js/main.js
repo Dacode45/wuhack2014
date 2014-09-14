@@ -2,10 +2,47 @@
 $(document).ready(
 	function(){
 		setUpPictureLoading();
-		var uploadButton = $("#upload-button");
-		uploadButton.on("click", openUploadDiv);
+		setUpUploadButton();
+
+		var myOptions = {
+			zoom:4,
+			mapTypeControl:true,
+			mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+			navigationControl: true,
+			navigationControlOptions: {style:google.maps.NavigationControlStyle.SMALL},
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+
+		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+
+
+		if(geo_position_js.init()){
+			geo_position_js.getCurrentPosition(showPosition, null);
+		}else
+			alert("Functionality not available");
 	});
 
+function showPosition(p){
+	var pos=new google.maps.LatLng(p.coords.latitude,p.coords.longitude);
+	console.log(pos);
+	map.setCenter(pos);
+	map.setZoom(14);
+
+	var infowindow = new google.maps.InfoWindow({
+	    content: "<strong>yes</strong>"
+	});
+
+	var marker = new google.maps.Marker({
+	    position: pos,
+	    map: map,
+	    title:"You are here"
+	});
+
+	google.maps.event.addListener(marker, 'click', function() {
+	  infowindow.open(map,marker);
+	});
+}
 
 function stringify(o){
 	var cache = [];
@@ -55,24 +92,17 @@ function createRandomImages(num, maxWidth, minWidth, maxHeight, minHeight){
 		var height = Math.floor(Math.random()*maxHeight + minHeight);
 		images[count] = createElt("img", {"src":"http://placehold.it/"+width+"x"+height})
 		
-		$(images[count]).click(function(e){
-			createEnlargedVersion($(this));
-		});
 		count++;
 	}
 	return images;
 }
 
-function createEnlargedVersion(img){
-	img = img.clone().detach();
-	console.log(img);
-}
 
 
 function loadPic(num){
 	num = num || 5;
 	return createRandomImages(num);
-	//return getPics(num);
+	//getPicsData(0);
 }
 
 function setUpPictureLoading(){
@@ -93,41 +123,34 @@ function setUpPictureLoading(){
 		});
 }
 
-function getPics(numberOfPics){
-
-	//call picture finder
-
-
-
-	var filenames;
-	return filenames;
-
-	//send ajax request 
-	var dataPic;
- 
-	var xmlHttp = new XMLHttpRequest(); // Initialize our XMLHttpRequest instance
-	xmlHttp.open("POST", "login_ajax.php", true); // Starting a POST request (NEVER send passwords as GET variables!!!)
-	xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // It's easy to forget this line for POST requests
-	xmlHttp.addEventListener("load", function(event){
-		var jsonData = JSON.parse(event.target.responseText); // parse the JSON into a JavaScript object
-		if(jsonData.success){  // in PHP, this was the "success" key in the associative array; in JavaScript, it's the .success property of jsonData
-			alert("You've been Logged In!");
-		}else{
-			alert("You were not logged in.  "+jsonData.message);
+function getPicsData(pageIndex) {	
+	$.ajax({
+	type: 'POST',
+	url: 'getPics.php',
+	data: {'pageIndex': pageIndex},
+	success: function(msg) {
+		var jsonData = JSON.parse(msg);
+		data = jsonData.data;
+		for (i = 0; i < data.length; i++) {
+			picData = data[i];
+			alert(picData.name);
+			//TODO
+			//add the images to the list.
 		}
-	}, false); // Bind the callback to the load event
-	xmlHttp.send(dataPic); // Send the data
+	}
+	});
 
 }
 
 function createUploadDiv(){
 	var uploadDiv =  createElt("div", {"id":"uploadDiv"})
-	var form = $("#formContainer").clone();
+	var form = $(".formContainer").clone();
 	
-	form.css("display", "inline");
-	uploadDiv.appendChild(form[0]);
-	uploadDiv.appendChild(createElt("div", {"id":"imagePreveiw"}));
-
+	//form.css("display", "initial");
+	form.toggleClass("show");
+	$(uploadDiv).append(form);
+	form.children(".button-container")[0].appendChild(createElt("div", {"id":"imagePreveiw"}));
+	
 	return uploadDiv;
 }
 
@@ -140,10 +163,6 @@ function openUploadDiv(){
 			$("#fileImage").click(function(){
 				console.log("hi");
 				$("#file").change(function(){
-
-
-
-
 					var files = this.files || [];
 					fileDisplayArea = document.getElementById("imagePreveiw");
 					console.log(files[0]);
@@ -186,4 +205,10 @@ function closeUploadDiv(up){
 	
 	$("#upload-button").off("click", closeUploadDiv);
 	$("#upload-button").on("click", openUploadDiv);
+}
+
+function setUpUploadButton(){
+
+		var uploadButton = $("#upload-button");
+		uploadButton.on("click", openUploadDiv);
 }
