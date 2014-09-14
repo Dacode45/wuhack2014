@@ -109,13 +109,15 @@ function getImagesFromDataBase(num, callback){
 		while(count < 1){//pics.length){
 			console.log(callback1);
 			console.log(stringify(pics[0]));
-			images[count] = createElt("img", {"src":"pics/"+pics[count].fileName});
+			images[count] = createElt("img", {"src":"http://ec2-54-68-69-213.us-west-2.compute.amazonaws.com/swag/pics/"+pics[count].fileName});
 		console.log(picIndex + "," + images[count]);
 		count++;
 
 		}
+
 		console.log(callback1);	
-		callback1(images);
+		$("#content").append(images);
+		//callback1(images);
 	}));
 
 
