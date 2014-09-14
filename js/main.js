@@ -90,8 +90,23 @@ function loadPic(pics){
 			count1++;
 
 			}
+			var imageDivs = images.map(function(img){
+				var div = createElt("div", {"class":"imageWrapper"});
+				div.appendChild(img);
 
-			$("#content").append(images);
+				var voteDiv = createElt("div", {"class":"voteDivWrapper"});
+				var upDiv = createElt("div", {"class":"upVote"});
+				var downDiv = createElt("div", {"class":"downVote"});
+
+				voteDiv.appendChild(upDiv);
+				voteDiv.appendChild(downDiv);
+
+				div.appendChild(voteDiv);
+				
+
+				return div;
+			})
+			$("#content").append(imageDivs);
 		}
 		getPicsData(picIndex, loadPic, recursionDept++);
 	}else
@@ -106,7 +121,7 @@ function setUpPictureLoading(){
 		content.scroll(function(){
 
 
-			//console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
+			console.log("Scrolling + " + (content.scrollTop() + content.outerHeight()) +"," +content[0].scrollHeight);
 			if(content.scrollTop() + content.outerHeight() >= content[0].scrollHeight-100){
 				loadPics(5);
 
@@ -190,6 +205,10 @@ function openUploadDiv(){
 });
 			$("#upload-button").off("click", openUploadDiv);
 				$("#upload-button").on("click", closeUploadDiv);
+}
+
+function submitForm(){
+	$(".show")[0].submit();
 }
 
 function closeUploadDiv(up){

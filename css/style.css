@@ -43,7 +43,8 @@ body {
 
 #content {
 	position: relative;
-	height: 90%;
+	border: 1px;
+	height: 80%;
 	width: 90%;
 	padding: 10px;
 	padding-top: 1em;
@@ -163,12 +164,22 @@ label {
 }
 */
 
-#content > img{
-	display: block;
+div.imageWrapper{
+	width: 90%;
+	overflow: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+}
+
+.imageWrapper img{
+
+	display: inline-block;
 	margin: auto;
-	margin-top: 10px;
 	max-width: 90%;
-	max-height: 90%;
+	float: left;
 	-moz-transition: all 1s;
     -ms-transition: all 1s;
     -o-transition: all 1s;
@@ -176,15 +187,33 @@ label {
     transition: all 1s;
 }
 
-#enlargedImageWrapper(){
-	position: absolute;
-	max-width: 100%;
-	max-height: 100%;
-	z-index: 1;
+.voteDivWrapper{
+	height: 100%;
+	width: 8%;
+	float: right;
 }
 
-.enlarge{
-	max-width: 100%;
+.upVote{
+	position: relative;
+	top:0;
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	height: 30px;
+	width: 100%;
+	background: green;
+}
+
+.downVote{
+	position: relative;
+	bottom:0;
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin: auto;
+	height: 30px;
+	width: 100%;
+	background: red;
 }
 
 #uploadDiv {
@@ -204,7 +233,7 @@ label {
 }
 
 #imagePreveiw  img {
-	display: block;
+	display: inline-block;
 	margin: auto;
 	margin-top: 0px;
 	max-width: 90%;
@@ -212,24 +241,21 @@ label {
 
 }
 
-.footer-button, #submit {
+.footer-button{
+	display: inline-block;
 	position: relative;
 	background-color: #a976ca;
 	color: #ebebeb;
 	font-family: 'Lato', Arial, sans-serif;
-	width: 100px;
-	height: 40px;
 	border: none;
-	display: inline-block;
+	padding: 1em;
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 }
 
+
 .footer-button:hover {
-	background-color: #b78dd2;
-}
-#submit:hover {
 	background-color: #b78dd2;
 }
 
@@ -239,12 +265,6 @@ label {
 	padding-top: 4px;
 	padding-bottom: 4px;
 	cursor: pointer;
-}
-
-#submit {
-	margin-top: 6px;
-	height: 48px;
-	padding-bottom: 20px;
 }
 
 #divider {
