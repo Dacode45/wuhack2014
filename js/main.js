@@ -92,7 +92,13 @@ function setUpPictureLoading(){
 function getPics(int numberOfPics){
 
 	//call picture finder
+
+
+
 	return var filenames = phpshit(numberOfPics);
+
+
+	//send ajax request
 
 }
 
